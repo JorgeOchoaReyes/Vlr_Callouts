@@ -10,8 +10,7 @@ import {
     chakra,
     Tooltip,
   } from '@chakra-ui/react';
-import split from '../Util/asite.png'
-  
+import React, { useEffect } from 'react'   
 
   
   interface RatingProps {
@@ -20,7 +19,31 @@ import split from '../Util/asite.png'
   }
 
   
-  function Card() {
+  function Card({imgUrl}) {
+    
+    const [leftColor, setLeftColor] = React.useState('red');
+    const [rightColor, setRightColor] = React.useState('red'); 
+    const [imgSrc, setimgSrc] = React.useState(imgUrl)
+
+    const IconEnter = (e: any) => {
+      if(e.target.id == 'LEFT_ICON') setLeftColor('green'); 
+      else {
+        setRightColor('green');
+      }
+    } 
+
+    const IconExit = (e: any) => {
+      if(e.target.id == 'LEFT_ICON') setLeftColor('red'); 
+      else {
+        setRightColor('red');
+      }
+    }
+
+    useEffect(() => {
+      setimgSrc(imgUrl); 
+      console.log("CARD USEEFFECT TRIGGERED")
+    }, [imgUrl])
+
     return (
       <Flex p={50} w='full' h="full" alignItems="center" justifyContent="center">
         <Box
@@ -32,9 +55,10 @@ import split from '../Util/asite.png'
           position="relative">
   
           <Image
-            src={split.src}
+            src={imgUrl}
             h="auto"
             w='auto'
+   
             alt={`Picture of site`}
             roundedTop="lg"
           />
@@ -53,9 +77,15 @@ import split from '../Util/asite.png'
                 color={'gray.800'}
                 fontSize={'1.2em'}>
                 <chakra.a  display={'flex'}>
-                  <Icon as={ArrowLeftIcon} color='red' h={7} w={7} alignSelf={'center'} />
+                  <Icon id='LEFT_ICON' 
+                    as={ArrowLeftIcon}
+                    onMouseEnter={(e) => IconEnter(e)} 
+                    onMouseLeave={(e) => IconExit(e)} 
+                    color={leftColor} h={7} w={7} alignSelf={'center'} 
+                  />
                 </chakra.a>
               </Tooltip>
+
               <Box
                 fontSize="2xl"
                 fontWeight="semibold"
@@ -64,6 +94,7 @@ import split from '../Util/asite.png'
                 isTruncated> 
                 A site
               </Box>
+
               <Tooltip
                 label="Next Image"
                 bg="white"
@@ -71,7 +102,12 @@ import split from '../Util/asite.png'
                 color={'gray.800'}
                 fontSize={'1.2em'}>
                 <chakra.a  display={'flex'}>
-                  <Icon as={ArrowRightIcon} color='red' h={7} w={7} alignSelf={'center'} />
+                  <Icon id='Right_ICON' 
+                    as={ArrowRightIcon} 
+                    onMouseEnter={(e) => IconEnter(e)} 
+                    onMouseLeave={(e) => IconExit(e)} 
+                    color={rightColor} h={7} w={7} alignSelf={'center'} 
+                  />
                 </chakra.a>
               </Tooltip>
             </Flex>

@@ -7,7 +7,3 @@ export const darkTheme = "#19033c"
 export const darkThemeGrad_TB = "linear-gradient(to bottom, #240a4e, #100128)"
 export const textColor = "white"
 
-
-
-// background-color: #485461;
-// background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);

@@ -59,13 +59,8 @@ const MenuLinks = ({isOpen}) => {
                 align='center' 
                 justify={["center", "space-between", "flex-end", 'flex-end']}
                 direction={["column", "column", "row", "row"]}
-                pt={[4, 4, 0, 0]}
-            >
-                {/* <MenuItem to="/" isLast={0}> Home </MenuItem>
-                <MenuItem to="/about" isLast={0}> About </MenuItem>
-                <MenuItem to="/contact" isLast={0}> Contact </MenuItem>
-                <MenuItem to="/other" isLast={0}> Other </MenuItem> */}
-                <Button colorScheme='red' textColor='white' bg="#D5212E"> Submit a callout  </Button>
+                pt={[4, 4, 0, 0]}>
+                <Button colorScheme='red' textColor='white' fontWeight='bolder' bg="#D5212E"> Submit a callout  </Button>
             </Stack>
         </Box>
     )
