@@ -1,6 +1,8 @@
 # Valorant Pings
 Valorant Pings
 
+<img width="944" alt="image" src="https://user-images.githubusercontent.com/60721681/172301346-90095a8b-4c2e-427b-a2f9-822fa86a489b.png">
+
 
 <!-- TABLE OF CONTENTS -->
 <details>
