@@ -5,6 +5,7 @@ import {CheckIcon} from '@chakra-ui/icons';
 import Card from '../components/Card'
 import { animationDelay, lighBG, lightThemeGrad } from '../Util/constants';
 import view_1 from '../Util/asite.png'
+import {Mapper} from '../components/Mapper';
 
 interface ViewInterface {
     imgUrl: string,
@@ -75,6 +76,8 @@ const LeftContent: React.FC<MapInterface> = (map: MapInterface) => {
 }
 
 const RightContent = ({map_img}) => {
+    let URL = "https://c1.staticflickr.com/5/4052/4503898393_303cfbc9fd_b.jpg"
+    
     return (
         <VStack 
             w="full" 
@@ -84,14 +87,7 @@ const RightContent = ({map_img}) => {
             alignItems='center'>
             <SlideFade delay={animationDelay} in={true} offsetX='100px'>
                 <Box>
-
-
-                    <Image   
-                            loading='lazy'
-                            borderRadius='1em'
-                            src={map_img} 
-                            alt='Company Logo'/>
- 
+                    <Mapper  map_img={map_img} />
                 </Box>
 
             </SlideFade>
@@ -104,7 +100,7 @@ export const Main: React.FC<HeaderProps> = ({}) => {
     return (
         <Flex h={{base: "auto", xl: '95vh'}}  bg={lighBG} backgroundImage={lightThemeGrad}  direction={{base: "column", md: "row"}}>
             <LeftContent {...Map1} /> 
-            <RightContent map_img={Map1.imgURL} />     
+            <RightContent map_img={Map1.imgURL} />      
         </Flex> 
     );
 }
