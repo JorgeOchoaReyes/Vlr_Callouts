@@ -26,22 +26,31 @@ import React, { useEffect } from 'react'
     const [imgSrc, setimgSrc] = React.useState(imgUrl)
 
     const IconEnter = (e: any) => {
-      if(e.target.id == 'LEFT_ICON') setLeftColor('green'); 
-      else {
+      if(!e) return;
+      if(e.target.id == 'LEFT_ICON') {
+        setLeftColor('green');
+        return;
+      } 
+      if(e.target.id == 'RIGHT_ICON') {
         setRightColor('green');
+        return; 
       }
     } 
 
     const IconExit = (e: any) => {
-      if(e.target.id == 'LEFT_ICON') setLeftColor('red'); 
-      else {
+      if(!e) return;
+      if(e.target.id == 'LEFT_ICON') {
+        setLeftColor('red');
+        return;
+      } 
+      if(e.target.id == 'RIGHT_ICON') {
         setRightColor('red');
+        return; 
       }
     }
 
     useEffect(() => {
       setimgSrc(imgUrl); 
-      console.log("CARD USEEFFECT TRIGGERED")
     }, [imgUrl])
 
     return (
@@ -102,7 +111,7 @@ import React, { useEffect } from 'react'
                 color={'gray.800'}
                 fontSize={'1.2em'}>
                 <chakra.a  display={'flex'}>
-                  <Icon id='Right_ICON' 
+                  <Icon id='RIGHT_ICON' 
                     as={ArrowRightIcon} 
                     onMouseEnter={(e) => IconEnter(e)} 
                     onMouseLeave={(e) => IconExit(e)} 
