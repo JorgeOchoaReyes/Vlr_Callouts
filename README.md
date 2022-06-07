@@ -96,6 +96,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/jorgeochoareyes/spellant](https://github.com/JorgeOchoaReyes/spellant)
+Project Link: [https://github.com/jorgeochoareyes/Vlr_Callouts](https://github.com/JorgeOchoaReyes/Vlr_Callouts)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
