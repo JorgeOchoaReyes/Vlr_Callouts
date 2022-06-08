@@ -44,9 +44,9 @@
     {
       "id": "1db62daa-22a4-4b02-b5c0-fffdcf77c66c",
       "title": "Carpet",
-      "shape": "poly",
+      "shape": "rect",
       "name": "2",
-      "fillColor": "#eab54d4d",
+      "fillColor": "black",
       "strokeColor": "black",
       "coords": [
         126.5323383084577,
@@ -58,7 +58,7 @@
         85.23880597014923,
         378.6069651741293
       ],
-      "polygon": [
+      "rect": [
         [
           126.5323383084577,
           345.273631840796
