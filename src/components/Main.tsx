@@ -75,9 +75,7 @@ const LeftContent: React.FC<MapInterface> = (map: MapInterface) => {
     )
 }
 
-const RightContent = ({map_img}) => {
-    let URL = "https://c1.staticflickr.com/5/4052/4503898393_303cfbc9fd_b.jpg"
-    
+const RightContent = ({map_img}) => {    
     return (
         <VStack 
             w="full" 
