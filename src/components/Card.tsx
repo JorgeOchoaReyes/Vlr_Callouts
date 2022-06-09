@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
+import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import {
     Flex,
     Circle,
@@ -9,6 +9,13 @@ import {
     Icon,
     chakra,
     Tooltip,
+    Menu,
+    Button,
+    MenuButton,
+    MenuItem,
+    MenuList,
+    Select,
+    Stack,
   } from '@chakra-ui/react';
 import React, { useEffect } from 'react'   
 
@@ -54,15 +61,22 @@ import React, { useEffect } from 'react'
     }, [imgUrl])
 
     return (
-      <Flex p={50} w='full' h="full" alignItems="center" justifyContent="center">
+      <Flex w='full' h="full" alignItems="center" flexDirection={"column"} justifyContent="center">
+        <Flex w="full" paddingBottom={"10px"}>
+          <Select placeholder='Select option'>
+            <option value='option1'>See Line ups for this callout</option>
+            <option value='option2'>See callout area</option>
+            <option value='option3'>See Map info</option>
+          </Select>
+        </Flex> 
         <Box
-          bg={useColorModeValue('white', 'gray.800')}
+          bg={"#1a202c"}
           maxW="md"
           borderWidth="1px"
           rounded="lg"
           shadow="lg"
-          position="relative">
-  
+          >
+
           <Image
             src={imgUrl}
             h="auto"
