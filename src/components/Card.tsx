@@ -26,7 +26,7 @@ import React, { useEffect } from 'react'
   }
 
   
-  function Card({imgUrl}) {
+  function Card({imgUrl, title}) {
     
     const [leftColor, setLeftColor] = React.useState('red');
     const [rightColor, setRightColor] = React.useState('red'); 
@@ -115,7 +115,7 @@ import React, { useEffect } from 'react'
                 as="h4"
                 lineHeight="tight"
                 isTruncated> 
-                A site
+                {title}
               </Box>
 
               <Tooltip
@@ -138,7 +138,7 @@ import React, { useEffect } from 'react'
             <Flex justifyContent="space-between" alignContent="center">
               <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
                 <Box as="span" color={'gray.600'} fontSize="lg">
-                  Here
+                  Description
                 </Box>
               </Box>
             </Flex>

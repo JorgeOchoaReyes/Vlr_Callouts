@@ -57,7 +57,7 @@ const Map1: MapInterface  = {
 } 
 
 
-const LeftContent: React.FC<MapInterface> = (map: MapInterface) => {
+const LeftContent = ({title}) => {
 
     return (
             <VStack 
@@ -68,14 +68,14 @@ const LeftContent: React.FC<MapInterface> = (map: MapInterface) => {
                 >
                 <SlideFade delay={animationDelay} in={true} offsetY='100px'>
                     <Box textColor='white'>
-                        <Card imgUrl={map.callouts[0].views[0].imgUrl} /> 
+                        <Card title={title} imgUrl={Map1.callouts[0].views[0].imgUrl} /> 
                     </Box>
                 </SlideFade>
             </VStack>
     )
 }
 
-const RightContent = ({map_img}) => {    
+const RightContent = ({map_img, changeArea}) => {    
     return (
         <VStack 
             w="full" 
@@ -85,7 +85,7 @@ const RightContent = ({map_img}) => {
             alignItems='center'>
             <SlideFade delay={animationDelay} in={true} offsetX='100px'>
                 <Box>
-                    <Mapper  map_img={map_img} />
+                    <Mapper changeArea={changeArea} map_img={map_img} />
                 </Box>
 
             </SlideFade>
@@ -95,10 +95,11 @@ const RightContent = ({map_img}) => {
 }
 
 export const Main: React.FC<HeaderProps> = ({}) => {
+    const [chosenArea, setChosenArea] = React.useState(Map1.name); 
     return (
         <Flex h={{base: "auto", xl: '95vh'}}  bg={lighBG} backgroundImage={lightThemeGrad}  direction={{base: "column", md: "row"}}>
-            <LeftContent {...Map1} /> 
-            <RightContent map_img={Map1.imgURL} />      
+            <LeftContent title={chosenArea} /> 
+            <RightContent changeArea={setChosenArea} map_img={Map1.imgURL} />      
         </Flex> 
     );
 }
