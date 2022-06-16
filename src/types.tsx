@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image"
+
 export interface MapType {
     id: String,
     fillColor: string,
@@ -7,4 +9,9 @@ export interface MapType {
     coords: number[],
     poly: number[][],
     shape: string
+}
+
+export interface MapData {
+    data: Object[],
+    image: StaticImageData
 }
