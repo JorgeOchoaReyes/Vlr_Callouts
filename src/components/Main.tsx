@@ -1,60 +1,17 @@
 import React from 'react';
-import { Box, Text, Flex, Heading, VStack, Image, Button, SlideFade, Menu, Tooltip } from '@chakra-ui/react';
+import { Box, Text, Flex, Heading, VStack, Image, Button, SlideFade, Menu, Tooltip, Select } from '@chakra-ui/react';
 import Map from '../Util/split.png'; 
 import {CheckIcon} from '@chakra-ui/icons'; 
 import Card from '../components/Card'
 import { animationDelay, lighBG, lightThemeGrad } from '../Util/constants';
 import view_1 from '../Util/asite.png'
 import {Mapper} from '../components/Mapper';
+import {data} from '../Util/constants'; 
 
-interface ViewInterface {
-    imgUrl: string,
-    id: number
-}
-
-interface CalloutInterface {
-    callout: string,
-    id: number,
-    views: ViewInterface[],
-    cords: string
-}
-
-interface MapInterface {
-    imgURL: string,
-    id: number, 
-    name: string,
-    callouts: CalloutInterface[]
-}
-
-const View1: ViewInterface = {
-    imgUrl: view_1.src,
-    id: 1, 
-}
-
-const View2: ViewInterface = {
-    imgUrl: "",
-    id: 2,  
-}
 
 interface HeaderProps {
     
 }
-
-
-const Callout1: CalloutInterface = {
-    callout: 'A-Site',
-    id: 1,
-    views: [View1, View2],
-    cords: '"83,347,33,315"'
-}
-
-
-const Map1: MapInterface  = {
-    imgURL: Map.src,
-    id: 1, 
-    name: 'Split',
-    callouts: [Callout1]
-} 
 
 
 const LeftContent = ({title}) => {
@@ -68,14 +25,15 @@ const LeftContent = ({title}) => {
                 >
                 <SlideFade delay={animationDelay} in={true} offsetY='100px'>
                     <Box textColor='white'>
-                        <Card title={title} imgUrl={Map1.callouts[0].views[0].imgUrl} /> 
+                        <Card title={title} imgUrl={view_1.src} /> 
                     </Box>
                 </SlideFade>
             </VStack>
     )
 }
 
-const RightContent = ({map_img, changeArea}) => {    
+const RightContent = ({changeArea}) => {  
+    const [mapChosen, setmapChosen] = React.useState("split")  
     return (
         <VStack 
             w="full" 
@@ -83,11 +41,18 @@ const RightContent = ({map_img, changeArea}) => {
             p="10"  
             justifyContent='space-around'
             alignItems='center'>
+            <Flex w="full" paddingBottom={"10px"}>
+              <Select value={mapChosen} onChange={(e) => {
+                changeArea(e.target.value)
+                setmapChosen(e.target.value)}}>
+                <option value='split'>Split</option>
+                <option value='ascent'>Ascent</option>
+              </Select>
+            </Flex> 
             <SlideFade delay={animationDelay} in={true} offsetX='100px'>
                 <Box>
-                    <Mapper changeArea={changeArea} map_img={map_img} />
+                    <Mapper changeArea={changeArea} map_chosen={mapChosen} />
                 </Box>
-
             </SlideFade>
                            
         </VStack>
@@ -95,11 +60,11 @@ const RightContent = ({map_img, changeArea}) => {
 }
 
 export const Main: React.FC<HeaderProps> = ({}) => {
-    const [chosenArea, setChosenArea] = React.useState(Map1.name); 
+    const [chosenArea, setChosenArea] = React.useState("split"); 
     return (
-        <Flex h={{base: "auto", xl: '95vh'}}  bg={lighBG} backgroundImage={lightThemeGrad}  direction={{base: "column", md: "row"}}>
+        <Flex h={{base: "auto", xl: '110vh'}}  bg={lighBG} backgroundImage={lightThemeGrad}  direction={{base: "column", md: "row"}}>
             <LeftContent title={chosenArea} /> 
-            <RightContent changeArea={setChosenArea} map_img={Map1.imgURL} />      
+            <RightContent changeArea={setChosenArea} />      
         </Flex> 
     );
 }
