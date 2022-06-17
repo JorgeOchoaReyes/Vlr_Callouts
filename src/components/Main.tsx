@@ -42,7 +42,7 @@ const RightContent = ({changeArea}) => {
             justifyContent='space-around'
             alignItems='center'>
             <Flex w="full" paddingBottom={"10px"}>
-              <Select value={mapChosen} onChange={(e) => {
+              <Select style={{color: 'white'}} value={mapChosen} onChange={(e) => {
                 changeArea(e.target.value)
                 setmapChosen(e.target.value)}}>
                 <option value='split'>Split</option>
