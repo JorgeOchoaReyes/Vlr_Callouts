@@ -42,11 +42,11 @@ const RightContent = ({changeArea}) => {
             justifyContent='space-around'
             alignItems='center'>
             <Flex w="full" paddingBottom={"10px"}>
-              <Select value={mapChosen} onChange={(e) => {
+              <Select style={{color: 'white', background: 'black'}} value={mapChosen} onChange={(e) => {
                 changeArea(e.target.value)
                 setmapChosen(e.target.value)}}>
-                <option value='split'>Split</option>
-                <option value='ascent'>Ascent</option>
+                <option style={{backgroundColor: 'black'}} value='split'>Split</option>
+                <option style={{backgroundColor: 'black'}} value='ascent'>Ascent</option>
               </Select>
             </Flex> 
             <SlideFade delay={animationDelay} in={true} offsetX='100px'>
