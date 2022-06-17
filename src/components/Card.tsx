@@ -63,10 +63,10 @@ import React, { useEffect } from 'react'
     return (
       <Flex w='full' h="full" alignItems="center" flexDirection={"column"} justifyContent="center">
         <Flex w="full" paddingBottom={"10px"}>
-          <Select placeholder='Select option'>
-            <option value='option1'>See Line ups for this callout</option>
-            <option value='option2'>See callout area</option>
-            <option value='option3'>See Map info</option>
+          <Select style={{color: 'white', background: 'black'}}>
+            <option style={{backgroundColor: "black"}} value='option1'>See Line ups for this callout</option>
+            <option style={{backgroundColor: "black"}} value='option2'>See callout area</option>
+            <option style={{backgroundColor: "black"}} value='option3'>See Map info</option>
           </Select>
         </Flex> 
         <Box
