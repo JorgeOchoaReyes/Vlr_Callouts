@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Flex, Heading, VStack, Image, Button, SlideFade, Menu, Tooltip, Select } from '@chakra-ui/react';
+import { Box, Text, Flex, Heading, VStack, Image, Button, SlideFade, Menu, Tooltip, Select, AbsoluteCenter } from '@chakra-ui/react';
 import Map from '../Util/split.png'; 
 import {CheckIcon} from '@chakra-ui/icons'; 
 import Card from '../components/Card'
@@ -32,23 +32,14 @@ const LeftContent = ({title}) => {
     )
 }
 
-const RightContent = ({changeArea}) => {  
-    const [mapChosen, setmapChosen] = React.useState("split")  
+const RightContent = ({changeArea, mapChosen}) => {  
     return (
         <VStack 
             w="full" 
-            h="full" 
+            h="90%" 
             p="10"  
             justifyContent='space-around'
             alignItems='center'>
-            <Flex w="full" paddingBottom={"10px"}>
-              <Select style={{color: 'white', background: 'black'}} value={mapChosen} onChange={(e) => {
-                changeArea(e.target.value)
-                setmapChosen(e.target.value)}}>
-                <option style={{backgroundColor: 'black'}} value='split'>Split</option>
-                <option style={{backgroundColor: 'black'}} value='ascent'>Ascent</option>
-              </Select>
-            </Flex> 
             <SlideFade delay={animationDelay} in={true} offsetX='100px'>
                 <Box>
                     <Mapper changeArea={changeArea} map_chosen={mapChosen} />
@@ -61,11 +52,22 @@ const RightContent = ({changeArea}) => {
 
 export const Main: React.FC<HeaderProps> = ({}) => {
     const [chosenArea, setChosenArea] = React.useState("split"); 
+    const [mapChosen, setmapChosen] = React.useState("split")
     return (
-        <Flex h={{base: "auto", xl: '110vh'}}  bg={lighBG} backgroundImage={lightThemeGrad}  direction={{base: "column", md: "row"}}>
-            <LeftContent title={chosenArea} /> 
-            <RightContent changeArea={setChosenArea} />      
+        <>
+        <Flex w="50%" paddingBottom={"10px"} bg={lighBG} backgroundImage={lightThemeGrad} margin="auto">
+            <Select style={{color: 'white', background: 'black'}} value={chosenArea} onChange={(e) => {
+                setChosenArea(e.target.value)
+                setmapChosen(e.target.value)}}>
+                <option style={{backgroundColor: 'black'}} value='split'>Split</option>
+                <option style={{backgroundColor: 'black'}} value='ascent'>Ascent</option>
+            </Select>
         </Flex> 
+        <Flex h={{base: "auto", xl: '90vh'}} direction={{base: "column", md: "row"}}>
+            <LeftContent title={chosenArea} /> 
+            <RightContent changeArea={setChosenArea} mapChosen={mapChosen}/>      
+        </Flex> 
+        </>
     );
 }
 
