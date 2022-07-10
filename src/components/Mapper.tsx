@@ -9,7 +9,7 @@ export const Mapper = ({map_chosen, changeArea}) => {
         <ImageMapper   
                 map={data[map_chosen]["data"]}
                 responsive={true}
-                parentWidth={650}
+                parentWidth={1000}
                 src={data[map_chosen]["image"]} 
                 onClick={(e: CustomArea & MapType) => changeArea(e.title)}
         />
