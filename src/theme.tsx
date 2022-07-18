@@ -11,10 +11,6 @@ const breakpoints = createBreakpoints({
   "xl": "96em",
 })
 
-
-
-
-
 const colors = {
   primary: {
     100: "#E5FCF1",
@@ -28,8 +24,6 @@ const colors = {
     900: "#064C2E"
   }
 };
-
-
 
 const theme = extendTheme({
   colors,

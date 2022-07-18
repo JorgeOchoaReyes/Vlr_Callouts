@@ -3,16 +3,21 @@ import { animationDelay } from "../Util/constants"
 import ImageMapper, { CustomArea } from 'react-img-mapper';
 import { data } from "../Util/constants";
 import { MapType } from "../types";
+import useDeviceType from "../Util/useDeviceType";
+import useWindowSize from "../Util/useWindowSize";
 
 export const Mapper = ({map_chosen, changeArea}) => {
+    const {isDesktop} = useDeviceType(); 
+    const {width} = useWindowSize();
     return (
-        <ImageMapper   
+        <Box height={`${(width * (isDesktop ? 50 : 70))/100}px`}> 
+            <ImageMapper   
                 map={data[map_chosen]["data"]}
                 responsive={true}
-                parentWidth={1000}
+                parentWidth={(width * (isDesktop? 60 : 100))/100}
                 src={data[map_chosen]["image"]} 
                 onClick={(e: CustomArea & MapType) => changeArea(e.title)}
-        />
-            
+            />
+        </Box>            
     )
 }
