@@ -13,22 +13,20 @@ interface HeaderProps {
     
 }
 
-
 const LeftContent = ({title}) => {
-
     return (
-            <VStack 
-                w="full" 
-                h="full" 
-                p="10"  
-                justifyContent='space-around'
-                >
-                <SlideFade delay={animationDelay} in={true} offsetY='100px'>
-                    <Box textColor='white'>
-                        <Card title={title} imgUrl={view_1.src} /> 
-                    </Box>
-                </SlideFade>
-            </VStack>
+        <VStack 
+            w="full" 
+            h="full" 
+            p="10"  
+            justifyContent='space-around'
+            >
+            <SlideFade delay={animationDelay} in={true} offsetY='100px'>
+                <Box textColor='white'>
+                    <Card title={title} imgUrl={view_1.src} /> 
+                </Box>
+            </SlideFade>
+        </VStack>
     )
 }
 
@@ -63,7 +61,7 @@ export const Main: React.FC<HeaderProps> = ({}) => {
                 <option style={{backgroundColor: 'black'}} value='ascent'>Ascent</option>
             </Select>
         </Flex> 
-        <Flex h={{base: "auto", xl: '90vh'}} direction={{base: "column", md: "row"}}>
+        <Flex h={{base: "auto", xl: '100vh'}} direction={{base: "column", md: "row"}}>
             <LeftContent title={chosenArea} /> 
             <RightContent changeArea={setChosenArea} mapChosen={mapChosen}/>      
         </Flex> 

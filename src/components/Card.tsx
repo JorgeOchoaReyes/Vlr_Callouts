@@ -62,13 +62,6 @@ import React, { useEffect } from 'react'
 
     return (
       <Flex w='full' h="full" alignItems="center" flexDirection={"column"} justifyContent="center">
-        <Flex w="full" paddingBottom={"10px"}>
-          <Select style={{color: 'white', background: 'black'}}>
-            <option style={{backgroundColor: "black"}} value='option1'>See Line ups for this callout</option>
-            <option style={{backgroundColor: "black"}} value='option2'>See callout area</option>
-            <option style={{backgroundColor: "black"}} value='option3'>See Map info</option>
-          </Select>
-        </Flex> 
         <Box
           bg={"#1a202c"}
           maxW="md"
@@ -142,9 +135,15 @@ import React, { useEffect } from 'react'
                 </Box>
               </Box>
             </Flex>
-
           </Box>
         </Box>
+        <Flex w="full" paddingBottom={"10px"}>
+          <Select style={{color: 'white', background: 'black'}}>
+            <option style={{backgroundColor: "black"}} value='option1'>See Line ups for this callout</option>
+            <option style={{backgroundColor: "black"}} value='option2'>See callout area</option>
+            <option style={{backgroundColor: "black"}} value='option3'>See Map info</option>
+          </Select>
+        </Flex> 
       </Flex>
     );
   }
