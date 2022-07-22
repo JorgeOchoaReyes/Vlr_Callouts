@@ -53,7 +53,7 @@ export const Main: React.FC<HeaderProps> = ({}) => {
     const [mapChosen, setmapChosen] = React.useState("split")
     return (
         <>
-        <Flex w="50%" paddingBottom={"10px"} bg={lighBG} backgroundImage={lightThemeGrad} margin="auto">
+        <Flex w="50%" paddingBottom={"10px"} margin="auto">
             <Select style={{color: 'white', background: 'black'}} value={chosenArea} onChange={(e) => {
                 setChosenArea(e.target.value)
                 setmapChosen(e.target.value)}}>
