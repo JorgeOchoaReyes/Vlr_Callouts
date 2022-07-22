@@ -59,6 +59,7 @@ export const Main: React.FC<HeaderProps> = ({}) => {
                 setmapChosen(e.target.value)}}>
                 <option style={{backgroundColor: 'black'}} value='split'>Split</option>
                 <option style={{backgroundColor: 'black'}} value='ascent'>Ascent</option>
+                <option style={{backgroundColor: 'black'}} value='pearl'>Pearl</option>
             </Select>
         </Flex> 
         <Flex h={{base: "auto", xl: '100vh'}} direction={{base: "column", md: "row"}}>
