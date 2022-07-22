@@ -73,7 +73,7 @@ const NavbarContainer = ({children, ...props}) => {
             as="nav"
             align="center"
             justify="space-around" 
-            position="sticky" 
+            position="relative" 
             top={0}
             zIndex={1}
             wrap='wrap'
