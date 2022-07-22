@@ -10,11 +10,11 @@ export const Mapper = ({map_chosen, changeArea}) => {
     const {isDesktop} = useDeviceType(); 
     const {width} = useWindowSize();
     return (
-        <Box height={`${(width * (isDesktop ? 50 : 70))/100}px`}> 
+        <Box height={`${(width * (isDesktop ? 47 : 70))/100}px`}> 
             <ImageMapper   
                 map={data[map_chosen]["data"]}
                 responsive={true}
-                parentWidth={(width * (isDesktop? 60 : 100))/100}
+                parentWidth={(width * (isDesktop? 62 : 100))/100}
                 src={data[map_chosen]["image"]} 
                 onClick={(e: CustomArea & MapType) => changeArea(e.title)}
             />
