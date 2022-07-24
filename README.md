@@ -54,9 +54,14 @@ Valorant Pings is built for all players, new or experts, to have a way to study 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Create Full Example Map (Split)
-- [ ] Add boilerplate data to quickly add other maps 
-- [ ] Include Images with angles of each callout
+- [X] Create Full Example Map (Split)
+- [X] Pearl 
+- [X] Bind
+- [ ] Make UI more appealing
+- [ ] Fix Scaling of map issues
+- [ ] Add images of each call out 
+- [ ] Color code highlighted areas? maybe 
+- [ ] Make the map zoomable
 
 
 
