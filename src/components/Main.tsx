@@ -1,72 +1,92 @@
-import React from 'react';
-import { Box, Text, Flex, Heading, VStack, Image, Button, SlideFade, Menu, Tooltip, Select, AbsoluteCenter } from '@chakra-ui/react';
-import Map from '../Util/split.png'; 
-import {CheckIcon} from '@chakra-ui/icons'; 
-import Card from '../components/Card'
-import { animationDelay, lighBG, lightThemeGrad } from '../Util/constants';
-import view_1 from '../Util/asite.png'
-import {Mapper} from '../components/Mapper';
-import {data} from '../Util/constants'; 
-
+/* eslint-disable camelcase */
+import React from "react";
+import {Flex, Select, Button, ButtonGroup, Slide} from "@chakra-ui/react";
+import view_1 from "../utils/asite.png";
+import {Mapper} from "../components/Mapper";
+import {Sidebar} from "./Sidebar";
+import {HamburgerIcon} from "@chakra-ui/icons";
+import useDeviceType from "../hooks/useDeviceType";
 
 interface HeaderProps {
-    
+
 }
 
-const LeftContent = ({title}) => {
-    return (
-        <VStack 
-            w="full" 
-            h="full" 
-            p="10"  
-            justifyContent='space-around'
-            >
-            <SlideFade delay={animationDelay} in={true} offsetY='100px'>
-                <Box textColor='white'>
-                    <Card title={title} imgUrl={view_1.src} /> 
-                </Box>
-            </SlideFade>
-        </VStack>
-    )
+interface LeftProps {
+    title: string;
+    sidebarOpen: boolean,
 }
 
-const RightContent = ({changeArea, mapChosen}) => {  
-    return (
-        <VStack 
-            w="full" 
-            h="90%" 
-            p="10"  
-            justifyContent='space-around'
-            alignItems='center'>
-            <SlideFade delay={animationDelay} in={true} offsetX='100px'>
-                <Box>
-                    <Mapper changeArea={changeArea} map_chosen={mapChosen} />
-                </Box>
-            </SlideFade>
-                           
-        </VStack>
-    )
+interface RightProps {
+    changeArea: any,
+    mapChosen: string,
+    sidebarOpen: boolean,
 }
+
+const LeftContent: React.FC<LeftProps> = ({title, sidebarOpen}) => {
+  const {isDesktop} = useDeviceType();
+  return (
+    <Flex style={{
+      paddingBottom: "25px",
+      paddingLeft: isDesktop ? sidebarOpen ? "80px" : "0px" : 0}}>
+      <Slide
+        style={{position: "static"}}
+        direction={isDesktop ? "left" : "top"} in={sidebarOpen}>
+        <Sidebar sidebarOpen={sidebarOpen} img={view_1.src} title={title} />
+      </Slide>
+    </Flex>
+  );
+};
+
+const RightContent: React.FC<RightProps> =
+    ({changeArea, mapChosen, sidebarOpen}) => {
+      const {isDesktop} = useDeviceType();
+      return (
+        <Flex
+          transition={"1s"}
+          h="90%"
+          paddingLeft={isDesktop ? sidebarOpen ? "80px" : "0px" : 0}>
+          <Mapper changeArea={changeArea} map_chosen={mapChosen} />
+        </Flex>
+      );
+    };
 
 export const Main: React.FC<HeaderProps> = ({}) => {
-    const [chosenArea, setChosenArea] = React.useState("split"); 
-    const [mapChosen, setmapChosen] = React.useState("split")
-    return (
-        <>
-        <Flex w="50%" paddingBottom={"10px"} margin="auto">
-            <Select style={{color: 'white', background: 'black'}} value={chosenArea} onChange={(e) => {
-                setChosenArea(e.target.value)
-                setmapChosen(e.target.value)}}>
-                <option style={{backgroundColor: 'black'}} value='split'>Split</option>
-                <option style={{backgroundColor: 'black'}} value='ascent'>Ascent</option>
-                <option style={{backgroundColor: 'black'}} value='pearl'>Pearl</option>
-            </Select>
-        </Flex> 
-        <Flex h={{base: "auto", xl: '100vh'}} direction={{base: "column", md: "row"}}>
-            <LeftContent title={chosenArea} /> 
-            <RightContent changeArea={setChosenArea} mapChosen={mapChosen}/>      
-        </Flex> 
-        </>
-    );
-}
+  const [chosenArea, setChosenArea] = React.useState("split");
+  const [mapChosen, setmapChosen] = React.useState("split");
+  const [sidebar, setSidebar] = React.useState(false);
+  return (
+    <>
+      <Flex>
+        <ButtonGroup isAttached w="75%" padding={"40px"} margin="auto">
+          <Button
+            style={{borderRadius: 0}} onClick={() => setSidebar(!sidebar)}>
+            <HamburgerIcon /> </Button>
+          <Select
+            style={{color: "white", borderRadius: 0, background: "black"}}
+            value={chosenArea} onChange={(e) => {
+              setChosenArea(e.target.value);
+              setmapChosen(e.target.value);
+            }}>
+            <option
+              style={{backgroundColor: "black"}} value='split'>Split</option>
+            <option
+              style={{backgroundColor: "black"}} value='ascent'>Ascent</option>
+            <option
+              style={{backgroundColor: "black"}} value='pearl'>Pearl</option>
+          </Select>
+        </ButtonGroup>
+      </Flex>
+      <Flex
+        justifyContent={"center"}
+        align={"center"}
+        direction={{base: "column", md: "row"}}
+        h={{base: "80vh", md: "100vh"}}>
+        <LeftContent sidebarOpen={sidebar} title={chosenArea} />
+        <RightContent
+          sidebarOpen={sidebar}
+          changeArea={setChosenArea} mapChosen={mapChosen}/>
+      </Flex>
+    </>
+  );
+};
 

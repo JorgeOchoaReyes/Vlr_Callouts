@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 interface FadeProps {
 
 }
 
 export const Fade: React.FC<FadeProps> = ({}) => {
-        return (
-            <div> Fade Animation </div>
-        );
-}
+  return (
+    <div> Fade Animation </div>
+  );
+};

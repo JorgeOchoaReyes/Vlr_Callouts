@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+/* eslint-disable require-jsdoc */
+import {useState, useEffect} from "react";
 
 export default function useWindowSize() {
   const [windowSize, setWindowSize] = useState({

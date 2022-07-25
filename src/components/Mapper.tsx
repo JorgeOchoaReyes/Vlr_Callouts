@@ -1,23 +1,30 @@
-import { VStack, SlideFade, Box, Image } from "@chakra-ui/react"
-import { animationDelay } from "../Util/constants"
-import ImageMapper, { CustomArea } from 'react-img-mapper';
-import { data } from "../Util/constants";
-import { MapType } from "../types";
-import useDeviceType from "../Util/useDeviceType";
-import useWindowSize from "../Util/useWindowSize";
+/* eslint-disable react/prop-types */
+/* eslint-disable camelcase */
+import {Box} from "@chakra-ui/react";
+import ImageMapper, {CustomArea} from "react-img-mapper";
+import {data} from "../utils/constants";
+import {MapType} from "../types";
+import React from "react";
+import useDeviceType from "../hooks/useDeviceType";
+import useWindowSize from "../hooks/useWindowSize";
 
-export const Mapper = ({map_chosen, changeArea}) => {
-    const {isDesktop} = useDeviceType(); 
-    const {width} = useWindowSize();
-    return (
-        <Box height={`${(width * (isDesktop ? 47 : 70))/100}px`}> 
-            <ImageMapper   
-                map={data[map_chosen]["data"]}
-                responsive={true}
-                parentWidth={(width * (isDesktop? 62 : 100))/100}
-                src={data[map_chosen]["image"]} 
-                onClick={(e: CustomArea & MapType) => changeArea(e.title)}
-            />
-        </Box>            
-    )
+interface MapperProps {
+    map_chosen: string,
+    changeArea: any,
 }
+
+export const Mapper: React.FC<MapperProps> = ({map_chosen, changeArea}) => {
+  const {isDesktop} = useDeviceType();
+  const {width} = useWindowSize();
+  return (
+    <Box height={`${(width * (isDesktop ? 47 : 40))/100}px`}>
+      <ImageMapper
+        map={data[map_chosen]["data"]}
+        responsive={true}
+        parentWidth={(width * (isDesktop? 60 : 100))/100}
+        src={data[map_chosen]["image"]}
+        onClick={(e: CustomArea & MapType) => changeArea(e.title)}
+      />
+    </Box>
+  );
+};
