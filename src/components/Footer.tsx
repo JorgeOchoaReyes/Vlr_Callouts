@@ -30,7 +30,10 @@ export const Footer = () => (
         </Flex>
 
         <Flex align='center'>
-          <IconButton as="a" href="https://github.com/JorgeOchoaReyes/Vlr_Callouts" aria-label="GitHub" icon={<FaGithub fontSize="1.25rem" />} />
+          <IconButton 
+            as="a" 
+            href="https://github.com/JorgeOchoaReyes/Vlr_Callouts" 
+            aria-label="GitHub" icon={<FaGithub fontSize="1.25rem" />} />
         </Flex>
 
       </ButtonGroup>
