@@ -5,14 +5,16 @@ import useFetch from "../hooks/useFetchData";
 interface exampleProps {
 
 }
+
 // To view this go to http://localhost:3000/example
+
 const example: React.FC<exampleProps> = ({}) => {
   const {loading, data, error} = useFetch(); 
 
   if(loading) {
     return <Center 
       h="100vh" 
-      textColor='black' 
+      textColor='white' 
       fontSize='xl'> 
       <CircularProgress m='auto' isIndeterminate color='green.300' />  
     </Center>;
@@ -21,7 +23,7 @@ const example: React.FC<exampleProps> = ({}) => {
   if(!loading && !data) {
     return <Center 
       h="100vh" 
-      textColor='black' 
+      textColor='white' 
       fontSize='xl'> 
         Error 404: No Data Was Fetched. :{"("} Try again. 
     </Center>;
