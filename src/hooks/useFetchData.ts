@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
-
-const url = "/api/example"; 
+import React, { useEffect } from "react"; 
 
 // eslint-disable-next-line require-jsdoc
-export default function useFetch() {
+export default function useFetch(url) {
   const [loading, setLoading] = React.useState<boolean>(false); 
   const [data, setData] = React.useState<any>(); 
   const [error, setError] = React.useState<any>(); 

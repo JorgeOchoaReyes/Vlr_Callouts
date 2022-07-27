@@ -22,7 +22,7 @@ const users: User[] = [
 // eslint-disable-next-line require-jsdoc
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   await middleware(_req, res, Cors); 
-  res.status(200).json(users);
+  return res.status(200).json(users);
 };
 
 export default handler; 
