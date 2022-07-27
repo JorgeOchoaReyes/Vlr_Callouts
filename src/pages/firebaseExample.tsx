@@ -6,9 +6,9 @@ interface exampleProps {
 
 }
 
-const url = "/api/example";
+const url = "/api/firebaseExample";
 
-// To view this go to http://localhost:3000/example
+// To view this go to http://localhost:3000/firebaseExample
 
 const example: React.FC<exampleProps> = ({}) => {
   const {loading, data, error} = useFetch(url); 
@@ -33,12 +33,12 @@ const example: React.FC<exampleProps> = ({}) => {
   return (
     <Center h="100vh" >
       <VStack>
-        {data && !error && data.map((user) => {
+        {data && !error && data.map((quote: any, i: number) => {
           return <Text 
-            key={`#userId${user.id}`}
+            key={`#qoute${i}`}
             color={"white"}>
-            User Name: {user.name} {" "}
-            User Id: {user.id} 
+            {quote.quote}
+            - {quote.author}
           </Text>;
         })}   
       </VStack>
