@@ -1,9 +1,11 @@
 import ascentData from './ascent_map.json';
 import splitData from './split_map.json';
 import pearlData from './pearl_map.json';
+import iceboxData from './icebox_map.json';
 import ascentImage from './ascent.png';
 import splitImage from './split.png';
 import pearlImage from './pearl.png';
+import iceboxImage from './icebox.png';
 import { MapType } from '../types';
 import { MapAreas } from 'react-img-mapper';
 
@@ -20,5 +22,6 @@ export const textColor = "white"
 export const data = {
     ascent: {data:{name: "Ascent", areas: ascentData as MapAreas[]}, image: ascentImage.src },
     split: {data: {name: "Split", areas: splitData as MapAreas[]}, image: splitImage.src },
-    pearl: {data: {name: "Pearl", areas: pearlData as MapAreas[]}, image: pearlImage.src}
+    pearl: {data: {name: "Pearl", areas: pearlData as MapAreas[]}, image: pearlImage.src},
+    icebox: {data: {name: "IceBox", areas: iceboxData as MapAreas[]}, image: iceboxImage.src}
 }
