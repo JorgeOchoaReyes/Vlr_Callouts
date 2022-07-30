@@ -41,19 +41,19 @@ export const Sidebar: React.FC<SidebarProps> = ({img, title, sidebarOpen}) => {
       <Flex>
         <Text fontSize={{base: "10px", md: "20px"}}> Description: </Text>
       </Flex>
-      <Flex w="100%" justifyContent={"space-evenly"}>
+      <Flex w="100%" justifyContent={"space-between"}>
         <Button
           colorScheme={"whiteAlpha"}
-          bg={"red"}
+          bg={"red"} border="solid 1px white"
           w={`${(width * (isDesktop ? 4 : 6)/100)}px`}
           h={`${(width * (isDesktop ? 4 : 6)/100)}px`}>
-          <ArrowBackIcon /> </Button>
+          <ArrowBackIcon w={8} h={8} /> </Button>
         <Button
           colorScheme={"whiteAlpha"}
-          bg={"red"}
+          bg={"red"} border="solid 1px white"
           w={`${(width * (isDesktop ? 4 : 6)/100)}px`}
           h={`${(width * (isDesktop ? 4 : 6)/100)}px`}>
-          <ArrowForwardIcon /> </Button>
+          <ArrowForwardIcon w={8} h={8} /> </Button>
       </Flex>
     </Flex>
   );
