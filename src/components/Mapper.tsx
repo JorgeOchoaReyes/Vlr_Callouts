@@ -14,7 +14,9 @@ interface MapperProps {
     setSidebar: any
 }
 
-export const Mapper: React.FC<MapperProps> = ({map_chosen, changeArea, setSidebar}) => {
+export const Mapper: React.FC<MapperProps> = (
+  {map_chosen, changeArea, setSidebar}
+) => {
   const {isDesktop} = useDeviceType();
   const {width} = useWindowSize();
   return (
@@ -24,7 +26,10 @@ export const Mapper: React.FC<MapperProps> = ({map_chosen, changeArea, setSideba
         responsive={true}
         parentWidth={(width * (isDesktop? 60 : 100))/100}
         src={data[map_chosen]["image"]}
-        onClick={(e: CustomArea & MapType) => {changeArea(e.title); setSidebar(true);}}
+        onClick={(e: CustomArea & MapType) => {
+          changeArea(e.title); 
+          setSidebar(true);
+        }}
       />
     </Box>
   );

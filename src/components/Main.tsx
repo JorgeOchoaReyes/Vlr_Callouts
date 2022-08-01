@@ -46,7 +46,10 @@ const RightContent: React.FC<RightProps> =
           transition={"1s"}
           h="90%"
           paddingLeft={isDesktop ? sidebarOpen ? "80px" : "0px" : 0}>
-          <Mapper changeArea={changeArea} map_chosen={mapChosen} setSidebar={setSidebarOpen}/>
+          <Mapper 
+            changeArea={changeArea} 
+            map_chosen={mapChosen} 
+            setSidebar={setSidebarOpen}/>
         </Flex>
       );
     };
