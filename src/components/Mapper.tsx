@@ -11,9 +11,10 @@ import useWindowSize from "../hooks/useWindowSize";
 interface MapperProps {
     map_chosen: string,
     changeArea: any,
+    setSidebar: any
 }
 
-export const Mapper: React.FC<MapperProps> = ({map_chosen, changeArea}) => {
+export const Mapper: React.FC<MapperProps> = ({map_chosen, changeArea, setSidebar}) => {
   const {isDesktop} = useDeviceType();
   const {width} = useWindowSize();
   return (
@@ -23,7 +24,7 @@ export const Mapper: React.FC<MapperProps> = ({map_chosen, changeArea}) => {
         responsive={true}
         parentWidth={(width * (isDesktop? 60 : 100))/100}
         src={data[map_chosen]["image"]}
-        onClick={(e: CustomArea & MapType) => changeArea(e.title)}
+        onClick={(e: CustomArea & MapType) => {changeArea(e.title); setSidebar(true);}}
       />
     </Box>
   );

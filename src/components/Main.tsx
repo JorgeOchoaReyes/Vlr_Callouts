@@ -20,6 +20,7 @@ interface RightProps {
     changeArea: any,
     mapChosen: string,
     sidebarOpen: boolean,
+    setSidebarOpen: any
 }
 
 const LeftContent: React.FC<LeftProps> = ({title, sidebarOpen}) => {
@@ -38,14 +39,14 @@ const LeftContent: React.FC<LeftProps> = ({title, sidebarOpen}) => {
 };
 
 const RightContent: React.FC<RightProps> =
-    ({changeArea, mapChosen, sidebarOpen}) => {
+    ({changeArea, mapChosen, sidebarOpen, setSidebarOpen}) => {
       const {isDesktop} = useDeviceType();
       return (
         <Flex
           transition={"1s"}
           h="90%"
           paddingLeft={isDesktop ? sidebarOpen ? "80px" : "0px" : 0}>
-          <Mapper changeArea={changeArea} map_chosen={mapChosen} />
+          <Mapper changeArea={changeArea} map_chosen={mapChosen} setSidebar={setSidebarOpen}/>
         </Flex>
       );
     };
@@ -85,8 +86,8 @@ export const Main: React.FC<HeaderProps> = ({}) => {
         h={{base: "80vh", md: "100vh"}}>
         <LeftContent sidebarOpen={sidebar} title={chosenArea} />
         <RightContent
-          sidebarOpen={sidebar}
-          changeArea={setChosenArea} mapChosen={mapChosen}/>
+          sidebarOpen={sidebar} setSidebarOpen={setSidebar}
+          changeArea={setChosenArea} mapChosen={mapChosen} />
       </Flex>
     </>
   );
